@@ -30,23 +30,29 @@ public class Jukebox implements Runnable, ActionListener {
 	JButton button1 = new JButton();
 	JButton button2 = new JButton();
 	JButton button3 = new JButton();
-
+	Song z = new Song("the-weeknd-kendrick-lamar-pray-for-me-lyric-video.mp3");
+	Song c = new Song("3rd-prototyp-dancefloor-ncs-release.mp3");
+Song s = new Song("imagine-dragons-whatever-it-takes.mp3");
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
 
 	public void run() {
 		frame.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.add(button1);
+		button1.setText("WIT");
 		panel.add(button2);
+		button2.setText("PFM");
 		panel.add(button3);
-
+		button3.setText("HELL YEA BOIIIIII");
+frame.pack();
 		frame.setVisible(true);
 		button1.addActionListener(this);
 		// 3. Find an mp3 on your computer or on the Internet.
 
 		// 4. Create a Song
-
+	
 		// 5. Play the Song
 
 		/*
@@ -67,7 +73,15 @@ public class Jukebox implements Runnable, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
+		if(e.getSource()==button1) {
+			s.play();
+		}
+		else if(e.getSource()==button2) {
+			z.play();
+		}
+		else if(e.getSource()==button3) {
+			c.play();
+		}
 	}
 
 }
