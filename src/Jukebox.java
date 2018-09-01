@@ -1,3 +1,4 @@
+
 /*
  *    Copyright (c) The League of Amazing Programmers 2013-2018
  *    Level 1
@@ -26,13 +27,14 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 public class Jukebox implements Runnable, ActionListener {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
-
+	boolean playing = false;
 	JButton button1 = new JButton();
 	JButton button2 = new JButton();
 	JButton button3 = new JButton();
 	Song z = new Song("the-weeknd-kendrick-lamar-pray-for-me-lyric-video.mp3");
-	Song c = new Song("3rd-prototyp-dancefloor-ncs-release.mp3");
-Song s = new Song("imagine-dragons-whatever-it-takes.mp3");
+	Song c = new Song("3rd-prototype-dancefloor-ncs-release.mp3");
+	Song s = new Song("imagine-dragons-whatever-it-takes.mp3");
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
@@ -46,13 +48,15 @@ Song s = new Song("imagine-dragons-whatever-it-takes.mp3");
 		button2.setText("PFM");
 		panel.add(button3);
 		button3.setText("HELL YEA BOIIIIII");
-frame.pack();
+		frame.pack();
 		frame.setVisible(true);
 		button1.addActionListener(this);
+		button2.addActionListener(this);
+		button3.addActionListener(this);
 		// 3. Find an mp3 on your computer or on the Internet.
 
 		// 4. Create a Song
-	
+
 		// 5. Play the Song
 
 		/*
@@ -73,19 +77,50 @@ frame.pack();
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==button1) {
-			s.play();
+		if (e.getSource() == button1) {
+			if (playing == true) {
+				s.stop();
+				c.stop();
+				z.stop();
+				s.play();
+				playing = true;
+
+			} else if (playing == false) {
+				s.play();
+				playing = true;
+			}
+
 		}
-		else if(e.getSource()==button2) {
-			z.play();
+		if (e.getSource() == button2) {
+			if (playing == true) {
+				s.stop();
+				c.stop();
+				z.stop();
+				z.play();
+				playing = true;
+
+			} else if (playing == false) {
+				z.play();
+				playing = true;
+			}
+
 		}
-		else if(e.getSource()==button3) {
-			c.play();
+		if (e.getSource() == button3) {
+			if (playing == true) {
+				s.stop();
+				c.stop();
+				z.stop();
+				c.play();
+				playing = true;
+
+			} else if (playing == false) {
+				c.play();
+				playing = true;
+			}
+
 		}
 	}
-
 }
-
 class Song {
 
 	private int duration;

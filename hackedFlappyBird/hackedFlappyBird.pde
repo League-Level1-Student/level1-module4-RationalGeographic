@@ -15,12 +15,15 @@ void setup() {
 }
 void draw() {
   background(0);
+  
+  
   if (end) {
     b.move();
   }
   b.drawBird();
   if (end) {
     b.drag();
+    
   }
   b.checkCollisions();
   for (int i = 0; i<3; i++) {
@@ -106,9 +109,23 @@ class pillar {
     xPos = 100+(i*200);
     opening = random(600)+100;
   }
+  
   void drawPillar() {
+      if(score>19){
+   stroke(255,0,0);
+   
+  }
+      if(score>39){
+   stroke(252,104,0);
+   
+  }
+      if(score>59){
+   stroke(252,229,0);
+   
+  }
     line(xPos, 0, xPos, opening-100);  
     line(xPos, opening+100, xPos, 800);
+  
   }
   void checkPosition() {
     if (xPos<0) {
@@ -141,6 +158,8 @@ void mousePressed() {
   if (end==false) {
     reset();
   }
+  
+  
 }
 void keyPressed() {
   if(key==' '){
@@ -158,4 +177,5 @@ void keyPressed() {
     reset();
     
   }
+  
 }
