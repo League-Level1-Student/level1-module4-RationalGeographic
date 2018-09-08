@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="javazoom.jar"/>
+	<classpathentry kind="lib" path="/Users/league/Desktop/level1-module4-RationalGeographic/javazoom.jar"/>
+	<classpathentry kind="lib" path="/Users/league/Desktop/JLayer1.0/jl1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
