@@ -42,8 +42,9 @@ void draw() {
     rect(150, 200, 200, 50);
     fill(255);
     if (intro) {
-      text("Flappy Code", 155, 140);
+      text("Flappy Bird", 155, 140);
       text("Click to Play", 155, 240);
+      
     } else {
       text("game over", 170, 140);
       text("score", 180, 240);
@@ -54,15 +55,14 @@ void draw() {
 class bird {
   float xPos, yPos, ySpeed;
   bird() {
-    xPos = 250;
-    yPos = 400;
+    xPos = 250; yPos = 400;
   }
   void drawBird() {
     stroke(255);
     noFill();
     strokeWeight(2);
     ellipse(xPos, yPos, xd, yd);
-    ellipse(xPos, yPos, 1, 1);
+    ellipse(xPos, yPos, .5, .5);
     if (isGrowing) {
       xd++; 
       yd++;
@@ -85,6 +85,13 @@ class bird {
   void drag2() {
     ySpeed+=5;
   }
+  void drag3() {
+    xPos+=-10;
+  }
+  void drag4() {
+    xPos+=10;
+  }
+  
   void move() {
     yPos+=ySpeed; 
     for (int i = 0; i<3; i++) {
@@ -108,6 +115,7 @@ class pillar {
   pillar(int i) {
     xPos = 100+(i*200);
     opening = random(600)+100;
+    
   }
   
   void drawPillar() {
@@ -121,6 +129,22 @@ class pillar {
   }
       if(score>59){
    stroke(252,229,0);
+   
+  }
+        if(score>79){
+   stroke(051,170,017);
+   
+  }
+        if(score>99){
+   stroke(85,187,255);
+   
+  }
+   if(score>119){
+   stroke(255,0,0);
+   
+  }
+   if(score>139){
+   stroke(252,104,0);
    
   }
     line(xPos, 0, xPos, opening-100);  
@@ -171,7 +195,13 @@ void keyPressed() {
     if(key=='s'){
     b.drag2();
     }
-    
+    if(key=='a'){
+    b.drag3();
+    }
+    if(key=='d'){
+    b.drag4();
+    }
+   
   intro=false;
   if (end==false) {
     reset();
